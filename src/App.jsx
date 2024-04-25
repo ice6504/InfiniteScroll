@@ -31,13 +31,12 @@ function App() {
         .then((res) => {
           const limitedItems = res.data.slice(0, newLimit);
           setItems(limitedItems);
-          res.data.length < 0 ? setHasMore(false) : setHasMore(true);
+          res.data.length - items.length > 0 ? setHasMore(true) : setHasMore(false);
         })
         .catch((err) => console.log(err));
-    }, 1000);
+    }, 1200);
   };
-
-  console.log(items);
+ 
   return (
     <>
       <Navbar />
