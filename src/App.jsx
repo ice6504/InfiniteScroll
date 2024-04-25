@@ -31,12 +31,14 @@ function App() {
         .then((res) => {
           const limitedItems = res.data.slice(0, newLimit);
           setItems(limitedItems);
-          res.data.length - items.length > 0 ? setHasMore(true) : setHasMore(false);
+          res.data.length - items.length > 0
+            ? setHasMore(true)
+            : setHasMore(false);
         })
         .catch((err) => console.log(err));
     }, 1200);
   };
- 
+
   return (
     <>
       <Navbar />
@@ -46,6 +48,19 @@ function App() {
           next={fetchMoreData}
           hasMore={hasMore}
           loader={<Loading />}
+          pullDownToRefresh
+          pullDownToRefreshThreshold={100}
+          pullDownToRefreshContent={
+            <h3 style={{ textAlign: "center" }}>
+              &#8595; Pull down to refresh
+            </h3>
+          }
+          releaseToRefreshContent={
+            <h3 style={{ textAlign: "center" }}>&#8593; Release to refresh</h3>
+          }
+          refreshFunction={() => {
+            location.reload();
+          }}
         >
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4 px-5 lg:px-10">
             {items.map((item) => {
