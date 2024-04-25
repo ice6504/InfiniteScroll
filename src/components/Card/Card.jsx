@@ -13,7 +13,7 @@ function Card(props) {
             }
         </div>
         <div className="card-body items-center gap-3">
-          <div className=" w-full grid place-items-center text-center h-10 sm:h-36">
+          <div className=" w-full grid place-items-center text-center h-32 sm:h-36">
             <h2 className="card-title tracking-tight text-2xl">{data.description}</h2>
           </div>
           <div className="card-actions flex-col w-full gap-3">
