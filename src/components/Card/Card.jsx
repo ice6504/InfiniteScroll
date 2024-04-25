@@ -8,7 +8,9 @@ function Card(props) {
         <div className="card-body items-center text-center">
           <h2 className="card-title">{data.description}</h2>
           <div className="card-actions">
-            <button className="btn btn-primary">Buy Now</button>
+            <a className="btn btn-primary" href={data.url} target="_blank">
+              See More
+            </a>
           </div>
         </div>
       </div>
