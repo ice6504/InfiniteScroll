@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 // components
 import Navbar from "./components/Navbar/Navbar";
 import Card from "./components/Card/Card";
+import Loading from "./components/Loading/Loading";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -30,7 +31,7 @@ function App() {
         .then((res) => {
           const limitedItems = res.data.slice(0, newLimit);
           setItems(limitedItems);
-          res.data.length > 0 ? setHasMore(true) : setHasMore(false);
+          res.data.length < 0 ? setHasMore(false) : setHasMore(true);
         })
         .catch((err) => console.log(err));
     }, 1000);
@@ -45,6 +46,7 @@ function App() {
           dataLength={items.length}
           next={fetchMoreData}
           hasMore={hasMore}
+          loader={<Loading />}
         >
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4 px-5 lg:px-10">
             {items.map((item) => {
